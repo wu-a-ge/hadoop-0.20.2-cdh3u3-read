@@ -303,6 +303,7 @@ public abstract class FileInputFormat<K, V> extends InputFormat<K, V>
 			if ((length != 0) && isSplitable(job, path))
 			{
 				long blockSize = file.getBlockSize();
+				//默认按文件块大小切换片段
 				long splitSize = computeSplitSize(blockSize, minSize, maxSize);
 
 				long bytesRemaining = length;
