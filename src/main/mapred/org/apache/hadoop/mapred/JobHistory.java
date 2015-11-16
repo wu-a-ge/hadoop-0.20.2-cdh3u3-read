@@ -1479,10 +1479,10 @@ public class JobHistory
 				logFileName = encodeJobHistoryFileName(getNewJobHistoryFileName(
 						jobConf, jobId));
 			}
-
+			//${hadoop.job.history.location}目录下的日志文件
 			// setup the history log file for this job
 			Path logFile = getJobHistoryLogLocation(logFileName);
-
+			//${hadoop.job.history.user.location}目录下的日志文件
 			// find user log directory
 			Path userLogFile = getJobHistoryLogLocationForUser(logFileName,
 					jobConf);
@@ -1568,6 +1568,7 @@ public class JobHistory
 				}
 			}
 			// Always store job conf on local file system
+			//${hadoop.io.dir} 保存的配置文件
 			String localJobFilePath = JobInfo.getLocalJobFilePath(jobId);
 			File localJobFile = new File(localJobFilePath);
 			FileOutputStream jobOut = null;
@@ -1603,6 +1604,7 @@ public class JobHistory
 			}
 
 			/* Storing the job conf on the log dir */
+			//${hadoop.job.history.location}下保存的配置文件
 			Path jobFilePath = null;
 			if (LOG_DIR != null)
 			{
@@ -1610,6 +1612,7 @@ public class JobHistory
 						+ jobUniqueString + "_conf.xml");
 				fileManager.setConfFile(jobId, jobFilePath);
 			}
+			///${hadoop.job.history.user.location} 下保存的配置文件
 			Path userJobFilePath = null;
 			if (userLogDir != null)
 			{

@@ -34,6 +34,7 @@ import org.apache.hadoop.util.StringUtils;
 /**
  * A {@link JobInProgressListener} which initializes the tasks for a job as soon
  * as the job is added (using the {@link #jobAdded(JobInProgress)} method).
+ * 对JOB列表的按优先级和添加时间排序，然后从列表中取出来使用传递给JobTracker的initJob方法对JOB进行初始化
  */
 class EagerTaskInitializationListener extends JobInProgressListener
 {
